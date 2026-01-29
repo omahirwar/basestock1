@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="dark scroll-smooth">
 <head>
-    <title>BaseQuest | Base Official Quiz</title>
+    <title>⚡ BaseQuest | Crypto Quiz</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
@@ -12,19 +12,18 @@
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { sans: ['Inter', 'sans-serif'] },
                     colors: {
-                        base: {
-                            900: '#0A0E1A',
-                            800: '#111827',
-                            700: '#1F2937',
-                            600: '#374151',
-                            500: '#6B7280',
-                            400: '#9CA3AF',
-                            300: '#D1D5DB',
-                            200: '#E5E7EB',
-                            100: '#F3F4F6',
-                            50: '#F9FAFB'
+                        fintech: {
+                            900: '#1E0F2A',
+                            800: '#2A1B3D',
+                            700: '#372D55',
+                            600: '#4A3E6D',
+                            500: '#6B4E9F',
+                            400: '#8C67B8',
+                            300: '#A885D1',
+                            200: '#C2A1EA',
+                            100: '#DAB8F5',
+                            50: '#F1E3FF'
                         }
                     }
                 }
@@ -35,174 +34,162 @@
     <style>
         * { font-family: 'Inter', sans-serif; }
         
-        .base-gradient {
-            background: linear-gradient(135deg, #0A0E1A 0%, #1F2937 50%, #374151 100%);
+        .fintech-gradient {
+            background: linear-gradient(135deg, #1E0F2A 0%, #2A1B3D 25%, #372D55 50%, #6B4E9F 100%);
         }
         
-        .glass-base {
-            background: rgba(255, 255, 255, 0.02);
+        .glass-fintech {
+            background: rgba(30, 15, 42, 0.85);
             backdrop-filter: blur(32px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(107, 78, 159, 0.3);
         }
         
-        .glow-base {
-            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1), 0 0 40px rgba(99, 102, 241, 0.2);
+        .btn-fintech {
+            background: linear-gradient(135deg, #6B4E9F, #8C67B8, #A885D1);
+            box-shadow: 0 20px 40px rgba(107, 78, 159, 0.4);
+            border: 1px solid rgba(168, 133, 209, 0.5);
+        }
+        .btn-fintech:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(107, 78, 159, 0.6);
         }
         
-        .metric-card {
-            background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
-            border: 1px solid rgba(255,255,255,0.06);
+        .glow-fintech {
+            box-shadow: 0 0 40px rgba(107, 78, 159, 0.6);
         }
         
-        .btn-base {
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(79, 70, 229, 0.15) 100%);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(99, 102, 241, 0.3);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .btn-base:hover {
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.4) 0%, rgba(79, 70, 229, 0.3) 100%);
-            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.3);
-            transform: translateY(-2px);
-        }
-        
-        @keyframes shimmer {
-            0% { background-position: -468px 0; }
-            100% { background-position: 468px 0; }
+        h1, h2, h3 {
+            background: linear-gradient(135deg, #A885D1, #C2A1EA, #DAB8F5);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
     </style>
 </head>
 
-<body class="bg-base-gradient min-h-screen text-white overflow-x-hidden">
+<body class="fintech-gradient min-h-screen text-white overflow-x-hidden">
     
-    <!-- Navigation (Base Style) -->
-    <nav class="fixed top-0 left-0 right-0 z-50 glass-base px-6 py-4">
-        <div class="max-w-7xl mx-auto flex items-center justify-between">
-            <div class="flex items-center space-x-4">
-                <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center">
-                    <i class="fas fa-atom text-white text-sm"></i>
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-fintech px-6 py-4">
+        <div class="max-w-4xl mx-auto flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-12 h-12 bg-gradient-to-br from-[#6B4E9F] to-[#8C67B8] rounded-2xl flex items-center justify-center glow-fintech">
+                    <i class="fas fa-atom text-white text-xl"></i>
                 </div>
-                <span class="font-bold text-xl bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
-                    BaseQuest
-                </span>
+                <span class="text-2xl font-bold">BaseQuest</span>
             </div>
-            <div class="flex items-center space-x-4">
-                <button class="btn-base px-6 py-2.5 rounded-xl text-sm font-medium flex items-center space-x-2">
-                    <i class="fas fa-wallet"></i>
-                    <span>Connect</span>
-                </button>
-            </div>
+            <button class="btn-fintech px-6 py-3 rounded-xl text-lg font-semibold flex items-center space-x-2">
+                <i class="fas fa-wallet"></i>
+                <span>Connect</span>
+            </button>
         </div>
     </nav>
 
-    <!-- Hero Section (Exact Base Style) -->
-    <section class="pt-24 pb-32">
-        <div class="max-w-7xl mx-auto px-6">
-            <!-- Main Headline -->
+    <!-- Hero Section (Exact Fintech Style) -->
+    <section class="pt-28 pb-32">
+        <div class="max-w-4xl mx-auto px-6">
+            <!-- Badge -->
+            <div class="inline-flex items-center px-6 py-3 bg-white/10 backdrop-blur-sm rounded-2xl border border-[#6B4E9F]/30 mb-12 mx-auto block w-fit">
+                <i class="fas fa-crown text-yellow-400 mr-3"></i>
+                <span class="font-semibold text-[#C2A1EA]">OFFICIAL BASE QUIZ</span>
+            </div>
+
+            <!-- Main Title -->
             <div class="text-center mb-20">
-                <div class="inline-flex items-center px-4 py-2 bg-indigo-500/20 rounded-full text-indigo-300 text-sm font-medium mb-8 backdrop-blur-sm">
-                    <i class="fas fa-crown mr-2"></i>
-                    OFFICIAL BASE CHAIN QUIZ
-                </div>
-                <h1 class="text-6xl md:text-7xl font-bold bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent leading-tight mb-6">
-                    Test Your<br>
-                    <span class="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text">Base Knowledge
-                    </span>
+                <h1 class="text-6xl md:text-7xl font-black leading-tight mb-8 max-w-3xl mx-auto">
+                    Base Chain<br>
+                    <span class="block">Master Challenge</span>
                 </h1>
-                <p class="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
-                    The ultimate challenge for Base builders. Prove you're onchain ready.
+                <p class="text-xl md:text-2xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
+                    Prove your blockchain skills. Earn exclusive Base badges.
                 </p>
             </div>
 
-            <!-- Metrics Row (Base Style) -->
+            <!-- Stats Cards (Fintech Style) -->
             <div class="grid md:grid-cols-4 gap-6 mb-20">
-                <div class="metric-card p-8 rounded-2xl text-center group hover:scale-[1.02] transition-all duration-500">
-                    <div class="text-4xl font-black text-indigo-400 mb-2 group-hover:scale-110 transition-transform">$3.1B+</div>
-                    <div class="text-slate-400 font-medium text-sm">TVL on Base</div>
+                <div class="glass-fintech p-8 rounded-3xl text-center group hover:scale-[1.05] transition-all duration-500 glow-fintech">
+                    <div class="text-4xl font-black text-[#A885D1] mb-4">$3.1B+</div>
+                    <div class="text-slate-400 font-medium">TVL</div>
                 </div>
-                <div class="metric-card p-8 rounded-2xl text-center group hover:scale-[1.02] transition-all duration-500">
-                    <div class="text-4xl font-black text-green-400 mb-2 group-hover:scale-110 transition-transform">450ms</div>
-                    <div class="text-slate-400 font-medium text-sm">Block Time</div>
+                <div class="glass-fintech p-8 rounded-3xl text-center group hover:scale-[1.05] transition-all duration-500 glow-fintech">
+                    <div class="text-4xl font-black text-[#C2A1EA] mb-4">450ms</div>
+                    <div class="text-slate-400 font-medium">Block Time</div>
                 </div>
-                <div class="metric-card p-8 rounded-2xl text-center group hover:scale-[1.02] transition-all duration-500">
-                    <div class="text-4xl font-black text-purple-400 mb-2 group-hover:scale-110 transition-transform">1M+</div>
-                    <div class="text-slate-400 font-medium text-sm">Active Users</div>
+                <div class="glass-fintech p-8 rounded-3xl text-center group hover:scale-[1.05] transition-all duration-500 glow-fintech">
+                    <div class="text-4xl font-black text-[#DAB8F5] mb-4">1M+</div>
+                    <div class="text-slate-400 font-medium">Users</div>
                 </div>
-                <div class="metric-card p-8 rounded-2xl text-center group hover:scale-[1.02] transition-all duration-500">
-                    <div class="text-4xl font-black text-pink-400 mb-2 group-hover:scale-110 transition-transform">24h</div>
-                    <div class="text-slate-400 font-medium text-sm">Daily Quests</div>
+                <div class="glass-fintech p-8 rounded-3xl text-center group hover:scale-[1.05] transition-all duration-500 glow-fintech">
+                    <div class="text-4xl font-black text-[#8C67B8] mb-4">24h</div>
+                    <div class="text-slate-400 font-medium">Quests</div>
                 </div>
             </div>
 
-            <!-- CTA Card (Official Base Design) -->
-            <div class="max-w-2xl mx-auto text-center glass-base p-12 rounded-3xl glow-base border border-indigo-500/20">
-                <div class="mb-8">
-                    <i class="fas fa-trophy text-5xl text-yellow-400 mb-6"></i>
-                    <h3 class="text-3xl font-bold text-white mb-4">🏆 Arena Leaderboard</h3>
-                    <p class="text-slate-400 text-lg">Top 1% get exclusive Base badges</p>
+            <!-- Main CTA (Exact Fintech Design) -->
+            <div class="max-w-2xl mx-auto glass-fintech p-12 rounded-3xl glow-fintech border-2 border-[#6B4E9F]/40">
+                <div class="text-center mb-10">
+                    <i class="fas fa-trophy text-6xl text-yellow-400 mb-6"></i>
+                    <h3 class="text-4xl font-bold mb-4">🏆 Arena Ready</h3>
+                    <p class="text-xl text-slate-300">Top 1% scorers get exclusive rewards</p>
                 </div>
                 <button onclick="startQuiz()" 
-                    class="w-full btn-base py-8 px-12 rounded-2xl text-2xl font-bold shadow-2xl glow-base hover:shadow-indigo-500/50 transition-all duration-500 group">
-                    <i class="fas fa-rocket mr-4 text-xl"></i>
-                    <span class="group-hover:translate-x-2 transition-transform">Enter BaseQuest Arena</span>
-                    <div class="absolute inset-0 bg-gradient-to-r from-indigo-500/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    class="w-full btn-fintech py-10 px-12 rounded-3xl text-2xl font-black shadow-2xl glow-fintech group">
+                    <i class="fas fa-rocket mr-4 text-2xl group-hover:mr-6 transition-all duration-500"></i>
+                    <span>🚀 Enter BaseQuest Arena</span>
                 </button>
             </div>
         </div>
     </section>
 
-    <!-- Quiz Screen (Hidden Initially) -->
-    <div id="quizScreen" class="min-h-screen p-8 hidden bg-base-gradient">
+    <!-- Quiz Screen -->
+    <div id="quizScreen" class="min-h-screen p-8 hidden fintech-gradient">
         <div class="max-w-4xl mx-auto">
-            <!-- Quiz Header -->
-            <div class="glass-base p-8 rounded-3xl mb-12 flex items-center justify-between">
+            <div class="glass-fintech p-8 rounded-3xl mb-12 flex items-center justify-between">
                 <div>
-                    <div class="text-4xl font-bold mb-2" id="questionNum">Q1/10</div>
-                    <div class="text-2xl font-semibold text-indigo-400" id="score">Score: 0 pts</div>
+                    <div class="text-4xl font-black mb-2" id="questionNum">Q1/10</div>
+                    <div class="text-2xl font-semibold text-[#C2A1EA]" id="score">Score: 0 pts</div>
                 </div>
-                <div class="w-28 h-28 bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl flex items-center justify-center text-3xl font-black glow-base" id="timer">
+                <div class="w-28 h-28 bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl flex items-center justify-center text-3xl font-black glow-fintech" id="timer">
                     30s
                 </div>
             </div>
 
-            <!-- Question Card -->
-            <div class="glass-base p-12 rounded-3xl mb-12">
-                <h2 class="text-3xl font-bold text-white mb-12 text-center leading-tight" id="question">
+            <div class="glass-fintech p-12 rounded-3xl mb-12">
+                <h2 class="text-3xl md:text-4xl font-black text-center mb-12 leading-tight" id="question">
                     Base chain is built on which Layer 2 stack?
                 </h2>
-                <div id="options" class="grid md:grid-cols-2 gap-6"></div>
+                <div id="options" class="grid md:grid-cols-2 gap-8"></div>
             </div>
 
-            <button onclick="nextQuestion()" id="nextBtn" 
-                class="w-full btn-base py-8 px-12 rounded-2xl text-2xl font-bold glow-base hidden">
-                Next Challenge →
+            <button onclick="nextQuestion()" id="nextBtn" class="w-full btn-fintech py-8 px-12 rounded-3xl text-2xl font-black glow-fintech hidden">
+                ➡️ Next Challenge
             </button>
         </div>
     </div>
 
     <!-- Result Screen -->
-    <div id="resultScreen" class="min-h-screen p-8 flex items-center justify-center bg-base-gradient hidden">
+    <div id="resultScreen" class="min-h-screen p-8 flex items-center justify-center fintech-gradient hidden">
         <div class="max-w-md w-full mx-auto">
-            <div class="glass-base p-12 rounded-3xl text-center glow-base">
-                <div class="w-32 h-32 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-3xl mx-auto mb-8 flex items-center justify-center shadow-2xl">
+            <div class="glass-fintech p-12 rounded-3xl text-center glow-fintech border-2 border-[#6B4E9F]/40">
+                <div class="w-32 h-32 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-3xl mx-auto mb-8 flex items-center justify-center shadow-2xl glow-fintech">
                     <i class="fas fa-crown text-4xl"></i>
                 </div>
-                <h2 class="text-6xl font-bold bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent mb-6" id="finalScore">92%</h2>
-                <p class="text-2xl text-slate-300 mb-12">🏆 Base Master Rank Achieved!</p>
+                <h2 class="text-6xl font-black mb-6" id="finalScore">92%</h2>
+                <p class="text-2xl text-slate-300 mb-12">🏆 Base Master Rank!</p>
                 
                 <div class="grid grid-cols-2 gap-6 mb-12">
-                    <div class="metric-card p-6 rounded-2xl">
-                        <div class="text-3xl font-bold text-green-400 mb-2" id="finalPoints">92</div>
-                        <div class="text-slate-400 text-sm">Points Earned</div>
+                    <div class="glass-fintech p-6 rounded-2xl">
+                        <div class="text-3xl font-black text-[#C2A1EA] mb-2" id="finalPoints">92</div>
+                        <div class="text-slate-400 text-sm">Points</div>
                     </div>
-                    <div class="metric-card p-6 rounded-2xl">
-                        <div class="text-3xl font-bold text-purple-400 mb-2">#7</div>
-                        <div class="text-slate-400 text-sm">Global Rank</div>
+                    <div class="glass-fintech p-6 rounded-2xl">
+                        <div class="text-3xl font-black text-[#DAB8F5] mb-2">#7</div>
+                        <div class="text-slate-400 text-sm">Rank</div>
                     </div>
                 </div>
                 
-                <button onclick="startQuiz()" class="w-full btn-base py-6 px-8 rounded-2xl text-xl font-bold mb-4 shadow-2xl">
-                    <i class="fas fa-redo mr-3"></i> Battle Again
+                <button onclick="startQuiz()" class="w-full btn-fintech py-6 px-8 rounded-2xl text-xl font-black mb-4 shadow-2xl">
+                    🔄 Play Again
                 </button>
             </div>
         </div>

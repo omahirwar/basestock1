@@ -1,250 +1,209 @@
 <!DOCTYPE html>
 <html class="dark scroll-smooth">
 <head>
-    <title>⚡ BaseQuest - Crypto Quiz Arena</title>
+    <title>BaseQuest | Base Official Quiz</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        'inter': ['Inter', 'sans-serif'],
-                        'grotesk': ['Space Grotesk', 'sans-serif']
-                    },
-                    animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'glow': 'glow 2s ease-in-out infinite alternate',
-                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite'
-                    },
-                    backdropBlur: {
-                        xs: '2px',
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        base: {
+                            900: '#0A0E1A',
+                            800: '#111827',
+                            700: '#1F2937',
+                            600: '#374151',
+                            500: '#6B7280',
+                            400: '#9CA3AF',
+                            300: '#D1D5DB',
+                            200: '#E5E7EB',
+                            100: '#F3F4F6',
+                            50: '#F9FAFB'
+                        }
                     }
                 }
             }
         }
     </script>
+    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
-        
         * { font-family: 'Inter', sans-serif; }
-        h1,h2,h3,h4,h5,h6 { font-family: 'Space Grotesk', sans-serif; }
         
-        .glass-primary {
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(24px);
-            border: 1px solid rgba(148, 163, 184, 0.2);
+        .base-gradient {
+            background: linear-gradient(135deg, #0A0E1A 0%, #1F2937 50%, #374151 100%);
         }
         
-        .glass-secondary {
-            background: rgba(255, 255, 255, 0.05);
+        .glass-base {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(32px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        .glow-base {
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1), 0 0 40px rgba(99, 102, 241, 0.2);
+        }
+        
+        .metric-card {
+            background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+        
+        .btn-base {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(79, 70, 229, 0.15) 100%);
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(148, 163, 184, 0.1);
-        }
-        
-        .gradient-1 { 
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
-        }
-        .gradient-2 { 
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); 
-        }
-        .gradient-3 { 
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); 
-        }
-        
-        .glow { 
-            box-shadow: 0 0 30px rgba(99, 102, 241, 0.5); 
-        }
-        .glow-pink { 
-            box-shadow: 0 0 30px rgba(236, 72, 153, 0.5); 
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-        
-        @keyframes glow {
-            from { box-shadow: 0 0 20px rgba(99, 102, 241, 0.4); }
-            to { box-shadow: 0 0 40px rgba(99, 102, 241, 0.8); }
-        }
-        
-        .neon-text {
-            background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #00f2fe);
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: neonGlow 2s ease-in-out infinite alternate;
-        }
-        
-        @keyframes neonGlow {
-            0% { filter: hue-rotate(0deg) drop-shadow(0 0 5px rgba(99, 102, 241, 0.5)); }
-            100% { filter: hue-rotate(60deg) drop-shadow(0 0 15px rgba(236, 72, 153, 0.8)); }
-        }
-        
-        .option-hover {
+            border: 1px solid rgba(99, 102, 241, 0.3);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .option-hover:hover {
-            transform: translateY(-4px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        .btn-base:hover {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.4) 0%, rgba(79, 70, 229, 0.3) 100%);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -468px 0; }
+            100% { background-position: 468px 0; }
         }
     </style>
 </head>
 
-<body class="bg-gradient-to-br from-slate-900 via-purple-900/20 to-slate-900 min-h-screen overflow-x-hidden">
+<body class="bg-base-gradient min-h-screen text-white overflow-x-hidden">
     
-    <!-- Floating Particles -->
-    <div class="fixed inset-0 pointer-events-none z-0">
-        <div class="absolute top-20 left-10 w-20 h-20 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-3xl animate-float"></div>
-        <div class="absolute top-1/2 right-20 w-32 h-32 bg-gradient-to-r from-pink-500/20 to-blue-500/20 rounded-full blur-3xl animate-pulse-slow" style="animation-delay: -2s;"></div>
-        <div class="absolute bottom-20 left-1/4 w-24 h-24 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-float" style="animation-delay: -1s;"></div>
-    </div>
-
-    <!-- Main Container -->
-    <div class="relative z-10">
-        
-        <!-- Home Screen -->
-        <div id="homeScreen" class="min-h-screen flex items-center justify-center p-4">
-            <div class="max-w-md w-full mx-auto text-center">
-                <!-- Main Card -->
-                <div class="glass-primary p-10 rounded-3xl relative overflow-hidden group">
-                    <!-- Decorative Elements -->
-                    <div class="absolute -top-4 -right-4 w-24 h-24 bg-gradient-1 rounded-full opacity-20 group-hover:opacity-30 transition-all duration-500"></div>
-                    <div class="absolute -bottom-4 -left-4 w-20 h-20 bg-gradient-2 rounded-full opacity-20 group-hover:opacity-30 transition-all duration-500"></div>
-                    
-                    <!-- Logo -->
-                    <div class="mb-8">
-                        <div class="inline-flex items-center px-6 py-3 bg-gradient-3 rounded-2xl backdrop-blur-sm border border-white/20 mb-6 glow">
-                            <i class="fas fa-crown text-yellow-400 mr-2"></i>
-                            <span class="font-grotesk font-bold text-xl text-white">BaseQuest</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Title -->
-                    <h1 class="text-5xl md:text-6xl font-grotesk font-black mb-6 leading-tight neon-text drop-shadow-2xl">
-                        Crypto<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-pink-400 to-blue-400">Arena</span>
-                    </h1>
-                    
-                    <!-- Subtitle -->
-                    <p class="text-xl md:text-2xl font-medium text-slate-300 mb-10 leading-relaxed max-w-md mx-auto">
-                        Test your blockchain skills.<br> 
-                        <span class="text-indigo-400 font-semibold">Earn your place.</span>
-                    </p>
-                    
-                    <!-- Stats -->
-                    <div class="grid grid-cols-3 gap-4 mb-10 opacity-80">
-                        <div class="text-center p-4">
-                            <div class="text-2xl font-black text-blue-400 mb-1">1K+</div>
-                            <div class="text-sm font-medium text-slate-400">Players</div>
-                        </div>
-                        <div class="text-center p-4">
-                            <div class="text-2xl font-black text-green-400 mb-1">98%</div>
-                            <div class="text-sm font-medium text-slate-400">Win Rate</div>
-                        </div>
-                        <div class="text-center p-4">
-                            <div class="text-2xl font-black text-purple-400 mb-1">24h</div>
-                            <div class="text-sm font-medium text-slate-400">Challenges</div>
-                        </div>
-                    </div>
-                    
-                    <!-- CTA Button -->
-                    <button onclick="startQuiz()" 
-                        class="w-full gradient-1 text-white py-8 px-8 rounded-3xl text-xl font-bold font-grotesk shadow-2xl glow hover:glow-pink transform hover:scale-[1.02] transition-all duration-500 group/btn">
-                        <i class="fas fa-rocket mr-3"></i>
-                        <span>⚡ Enter Arena</span>
-                        <div class="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent rounded-3xl -z-10 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500"></div>
-                    </button>
-                    
-                    <!-- Bottom glow -->
-                    <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
+    <!-- Navigation (Base Style) -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-base px-6 py-4">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center">
+                    <i class="fas fa-atom text-white text-sm"></i>
                 </div>
-                
-                <!-- Secondary CTA -->
-                <div class="mt-8 text-center">
-                    <p class="text-slate-500 text-sm mb-4">Made for <span class="font-semibold text-indigo-400">#BaseChain</span></p>
-                </div>
+                <span class="font-bold text-xl bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+                    BaseQuest
+                </span>
             </div>
-        </div>
-
-        <!-- Quiz Screen -->
-        <div id="quizScreen" class="min-h-screen p-4 hidden">
-            <div class="max-w-2xl mx-auto">
-                <!-- Header Bar -->
-                <div class="glass-primary p-6 rounded-3xl mb-8 flex items-center justify-between">
-                    <div>
-                        <div class="text-3xl font-grotesk font-black text-white mb-1" id="questionNum">Q1</div>
-                        <div class="text-lg font-semibold text-indigo-400" id="score">Score: 0</div>
-                    </div>
-                    <div class="w-24 h-24 glass-secondary rounded-2xl flex items-center justify-center">
-                        <div class="w-20 h-20 bg-gradient-to-r from-orange-500 to-red-500 rounded-xl flex items-center justify-center text-2xl font-black" id="timer">
-                            30
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Question Card -->
-                <div class="glass-secondary p-10 rounded-3xl mb-8">
-                    <div class="text-center mb-8">
-                        <div class="inline-flex items-center px-4 py-2 bg-gradient-2/20 rounded-2xl text-sm font-semibold text-pink-300 backdrop-blur-sm">
-                            <i class="fas fa-brain mr-2"></i> Base Chain Knowledge
-                        </div>
-                    </div>
-                    <h2 class="text-2xl md:text-3xl font-grotesk font-black text-white mb-10 text-center leading-tight" id="question">
-                        What is Base chain built on?
-                    </h2>
-                    <div id="options" class="space-y-4"></div>
-                </div>
-
-                <!-- Next Button -->
-                <button onclick="nextQuestion()" id="nextBtn" 
-                    class="w-full gradient-3 text-white py-6 px-8 rounded-3xl text-xl font-bold font-grotesk shadow-2xl glow hover:scale-[1.02] transition-all duration-500 hidden">
-                    <i class="fas fa-arrow-right mr-3"></i> Next Challenge
+            <div class="flex items-center space-x-4">
+                <button class="btn-base px-6 py-2.5 rounded-xl text-sm font-medium flex items-center space-x-2">
+                    <i class="fas fa-wallet"></i>
+                    <span>Connect</span>
                 </button>
             </div>
         </div>
+    </nav>
 
-        <!-- Result Screen -->
-        <div id="resultScreen" class="min-h-screen flex items-center justify-center p-4 hidden">
-            <div class="max-w-md w-full mx-auto text-center">
-                <div class="glass-primary p-12 rounded-3xl relative">
-                    <!-- Result Badge -->
-                    <div class="absolute -top-12 left-1/2 transform -translate-x-1/2 w-24 h-24 bg-gradient-3 rounded-2xl flex items-center justify-center text-2xl font-black shadow-2xl glow">
-                        🏆
+    <!-- Hero Section (Exact Base Style) -->
+    <section class="pt-24 pb-32">
+        <div class="max-w-7xl mx-auto px-6">
+            <!-- Main Headline -->
+            <div class="text-center mb-20">
+                <div class="inline-flex items-center px-4 py-2 bg-indigo-500/20 rounded-full text-indigo-300 text-sm font-medium mb-8 backdrop-blur-sm">
+                    <i class="fas fa-crown mr-2"></i>
+                    OFFICIAL BASE CHAIN QUIZ
+                </div>
+                <h1 class="text-6xl md:text-7xl font-bold bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent leading-tight mb-6">
+                    Test Your<br>
+                    <span class="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text">Base Knowledge
+                    </span>
+                </h1>
+                <p class="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
+                    The ultimate challenge for Base builders. Prove you're onchain ready.
+                </p>
+            </div>
+
+            <!-- Metrics Row (Base Style) -->
+            <div class="grid md:grid-cols-4 gap-6 mb-20">
+                <div class="metric-card p-8 rounded-2xl text-center group hover:scale-[1.02] transition-all duration-500">
+                    <div class="text-4xl font-black text-indigo-400 mb-2 group-hover:scale-110 transition-transform">$3.1B+</div>
+                    <div class="text-slate-400 font-medium text-sm">TVL on Base</div>
+                </div>
+                <div class="metric-card p-8 rounded-2xl text-center group hover:scale-[1.02] transition-all duration-500">
+                    <div class="text-4xl font-black text-green-400 mb-2 group-hover:scale-110 transition-transform">450ms</div>
+                    <div class="text-slate-400 font-medium text-sm">Block Time</div>
+                </div>
+                <div class="metric-card p-8 rounded-2xl text-center group hover:scale-[1.02] transition-all duration-500">
+                    <div class="text-4xl font-black text-purple-400 mb-2 group-hover:scale-110 transition-transform">1M+</div>
+                    <div class="text-slate-400 font-medium text-sm">Active Users</div>
+                </div>
+                <div class="metric-card p-8 rounded-2xl text-center group hover:scale-[1.02] transition-all duration-500">
+                    <div class="text-4xl font-black text-pink-400 mb-2 group-hover:scale-110 transition-transform">24h</div>
+                    <div class="text-slate-400 font-medium text-sm">Daily Quests</div>
+                </div>
+            </div>
+
+            <!-- CTA Card (Official Base Design) -->
+            <div class="max-w-2xl mx-auto text-center glass-base p-12 rounded-3xl glow-base border border-indigo-500/20">
+                <div class="mb-8">
+                    <i class="fas fa-trophy text-5xl text-yellow-400 mb-6"></i>
+                    <h3 class="text-3xl font-bold text-white mb-4">🏆 Arena Leaderboard</h3>
+                    <p class="text-slate-400 text-lg">Top 1% get exclusive Base badges</p>
+                </div>
+                <button onclick="startQuiz()" 
+                    class="w-full btn-base py-8 px-12 rounded-2xl text-2xl font-bold shadow-2xl glow-base hover:shadow-indigo-500/50 transition-all duration-500 group">
+                    <i class="fas fa-rocket mr-4 text-xl"></i>
+                    <span class="group-hover:translate-x-2 transition-transform">Enter BaseQuest Arena</span>
+                    <div class="absolute inset-0 bg-gradient-to-r from-indigo-500/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz Screen (Hidden Initially) -->
+    <div id="quizScreen" class="min-h-screen p-8 hidden bg-base-gradient">
+        <div class="max-w-4xl mx-auto">
+            <!-- Quiz Header -->
+            <div class="glass-base p-8 rounded-3xl mb-12 flex items-center justify-between">
+                <div>
+                    <div class="text-4xl font-bold mb-2" id="questionNum">Q1/10</div>
+                    <div class="text-2xl font-semibold text-indigo-400" id="score">Score: 0 pts</div>
+                </div>
+                <div class="w-28 h-28 bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl flex items-center justify-center text-3xl font-black glow-base" id="timer">
+                    30s
+                </div>
+            </div>
+
+            <!-- Question Card -->
+            <div class="glass-base p-12 rounded-3xl mb-12">
+                <h2 class="text-3xl font-bold text-white mb-12 text-center leading-tight" id="question">
+                    Base chain is built on which Layer 2 stack?
+                </h2>
+                <div id="options" class="grid md:grid-cols-2 gap-6"></div>
+            </div>
+
+            <button onclick="nextQuestion()" id="nextBtn" 
+                class="w-full btn-base py-8 px-12 rounded-2xl text-2xl font-bold glow-base hidden">
+                Next Challenge →
+            </button>
+        </div>
+    </div>
+
+    <!-- Result Screen -->
+    <div id="resultScreen" class="min-h-screen p-8 flex items-center justify-center bg-base-gradient hidden">
+        <div class="max-w-md w-full mx-auto">
+            <div class="glass-base p-12 rounded-3xl text-center glow-base">
+                <div class="w-32 h-32 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-3xl mx-auto mb-8 flex items-center justify-center shadow-2xl">
+                    <i class="fas fa-crown text-4xl"></i>
+                </div>
+                <h2 class="text-6xl font-bold bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent mb-6" id="finalScore">92%</h2>
+                <p class="text-2xl text-slate-300 mb-12">🏆 Base Master Rank Achieved!</p>
+                
+                <div class="grid grid-cols-2 gap-6 mb-12">
+                    <div class="metric-card p-6 rounded-2xl">
+                        <div class="text-3xl font-bold text-green-400 mb-2" id="finalPoints">92</div>
+                        <div class="text-slate-400 text-sm">Points Earned</div>
                     </div>
-                    
-                    <h2 class="text-6xl font-grotesk font-black bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent mb-6" id="finalScore">
-                        92%
-                    </h2>
-                    <p class="text-2xl font-semibold text-slate-300 mb-10">Legendary Performance!</p>
-                    
-                    <div class="grid grid-cols-2 gap-4 mb-10">
-                        <div class="glass-secondary p-6 rounded-2xl">
-                            <div class="text-3xl font-black text-green-400 mb-2" id="finalPoints">92</div>
-                            <div class="text-sm font-medium text-slate-400">Points Earned</div>
-                        </div>
-                        <div class="glass-secondary p-6 rounded-2xl">
-                            <div class="text-3xl font-black text-purple-400 mb-2">#1</div>
-                            <div class="text-sm font-medium text-slate-400">Global Rank</div>
-                        </div>
-                    </div>
-                    
-                    <div class="space-y-4">
-                        <button onclick="startQuiz()" class="w-full gradient-1 text-white py-5 px-8 rounded-3xl text-xl font-bold font-grotesk shadow-2xl hover:scale-[1.02] transition-all duration-500">
-                            <i class="fas fa-redo mr-3"></i> Battle Again
-                        </button>
-                        <button onclick="showLeaderboard()" class="w-full glass-secondary text-white py-5 px-8 rounded-3xl text-xl font-bold font-grotesk border-2 border-indigo-500/50 hover:bg-indigo-500/20 transition-all duration-500">
-                            <i class="fas fa-trophy mr-3"></i> View Leaderboard
-                        </button>
+                    <div class="metric-card p-6 rounded-2xl">
+                        <div class="text-3xl font-bold text-purple-400 mb-2">#7</div>
+                        <div class="text-slate-400 text-sm">Global Rank</div>
                     </div>
                 </div>
+                
+                <button onclick="startQuiz()" class="w-full btn-base py-6 px-8 rounded-2xl text-xl font-bold mb-4 shadow-2xl">
+                    <i class="fas fa-redo mr-3"></i> Battle Again
+                </button>
             </div>
         </div>
     </div>

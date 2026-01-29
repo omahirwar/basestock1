@@ -1,9 +1,65 @@
 // 🔥 WORKING QUIZ LOGIC - 40 ENGLISH QUESTIONS 🔥
+// 🔥 50 PREMIUM QUESTIONS - BASE/DEFi/NFT/BLOCKCHAIN 🔥
 const questions = [
-    { question: "What L2 solution is Base chain built on?", options: ["Arbitrum", "Optimism", "Polygon", "zkSync"], correct: 1 },
-    { question: "Who created Base?", options: ["Vitalik Buterin", "Jesse Pollak", "Gavin Wood", "Anatoly"], correct: 1 },
-    // ... (same 40 questions jo pehle diye the)
+    // BASE CHAIN (1-20)
+    { question: "What L2 solution is Base built on?", options: ["Arbitrum", "Optimism", "Polygon", "zkSync"], correct: 1 },
+    { question: "Who created Base chain?", options: ["Vitalik Buterin", "Jesse Pollak", "Gavin Wood", "Brian Armstrong"], correct: 1 },
+    { question: "Base mainnet launched in?", options: ["2022", "2023", "2024", "2025"], correct: 1 },
+    { question: "Where is Base sequencer hosted?", options: ["AWS", "Google Cloud", "Decentralized", "Azure"], correct: 0 },
+    { question: "Base average block time?", options: ["200ms", "420ms", "650ms", "1s"], correct: 1 },
+    { question: "Base gas token?", options: ["BASE", "ETH", "USDC", "None"], correct: 1 },
+    { question: "Base TVL (approx)?", options: ["$1B", "$2B", "$4B+", "$10B"], correct: 2 },
+    { question: "Which company launched Base?", options: ["Binance", "Coinbase", "Polygon Labs", "Optimism"], correct: 1 },
+    { question: "Base explorer URL?", options: ["basescan.io", "base.org", "basescan.org", "base explorer.com"], correct: 2 },
+    { question: "Base first major dApp?", options: ["Uniswap", "Friend.tech", "Aave", "SushiSwap"], correct: 1 },
+    { question: "Base bridge connects to?", options: ["Arbitrum", "Ethereum", "BSC", "Solana"], correct: 1 },
+    { question: "Is Base EVM compatible?", options: ["Yes", "No", "Partial", "Future"], correct: 0 },
+    { question: "Base uses OP Stack?", options: ["Yes", "No", "Modified", "Custom"], correct: 0 },
+    { question: "Base sequencer decentralized?", options: ["Yes", "No", "Future", "Optional"], correct: 1 },
+    { question: "Base testnet faucet?", options: ["faucet.base.org", "testnet.base.org", "basefaucet.com", "None"], correct: 0 },
+    { question: "Base daily active users?", options: ["100K", "500K", "2M+", "10M"], correct: 2 },
+    { question: "Base transaction cost vs ETH?", options: ["Same", "10x cheaper", "100x cheaper", "1000x cheaper"], correct: 2 },
+    { question: "Base supports ERC-20?", options: ["Yes", "No", "Only ERC-721", "Future"], correct: 0 },
+    { question: "Base Discord?", options: ["discord.base.org", "discord.gg/buildonbase", "base.discord.com", "None"], correct: 1 },
+    { question: "Base Twitter handle?", options: ["@BaseChain", "@base", "@BuildOnBase", "@CoinbaseBase"], correct: 1 },
+
+    // BLOCKCHAIN BASICS (21-30)
+    { question: "First blockchain block called?", options: ["Origin", "Genesis", "Root", "Alpha"], correct: 1 },
+    { question: "Blockchain key feature?", options: ["Speed", "Centralized", "Immutable", "Cheap"], correct: 2 },
+    { question: "Bitcoin creator pseudonym?", options: ["Vitalik", "Satoshi", "Hal Finney", "Nick Szabo"], correct: 1 },
+    { question: "Smart contracts invented by?", options: ["Satoshi", "Vitalik Buterin", "Charles Hoskinson", "Gavin Wood"], correct: 1 },
+    { question: "Merkle tree purpose?", options: ["Mining", "Verification", "Storage", "Speed"], correct: 1 },
+    { question: "Private key role?", options: ["View transactions", "Sign transactions", "Read blockchain", "Mine blocks"], correct: 1 },
+    { question: "Gas used for?", options: ["Storage", "Computation", "Speed", "Security"], correct: 1 },
+    { question: "Proof of Stake vs Work?", options: ["Faster", "Energy efficient", "Centralized", "Slow"], correct: 1 },
+    { question: "dApp definition?", options: ["Desktop app", "Decentralized app", "Database app", "Dynamic app"], correct: 1 },
+    { question: "51% attack targets?", options: ["Storage", "Consensus", "Speed", "Privacy"], correct: 1 },
+
+    // DEFI (31-40)
+    { question: "DeFi full form?", options: ["Decentralized Finance", "Digital Finance", "Direct Finance", "Dynamic Finance"], correct: 0 },
+    { question: "DEX meaning?", options: ["Direct Exchange", "Decentralized Exchange", "Digital Exchange", "Dynamic Exchange"], correct: 1 },
+    { question: "Liquidity Provider earns?", options: ["Trading fees", "Block rewards", "Gas refunds", "NFTs"], correct: 0 },
+    { question: "Yield farming is?", options: ["NFT trading", "LP staking", "Bridging", "Mining"], correct: 1 },
+    { question: "Uniswap V3 feature?", options: ["Concentrated liquidity", "Fixed pools", "Central orderbook", "CEX matching"], correct: 0 },
+    { question: "Impermanent loss cause?", options: ["Gas fees", "Price divergence", "Slippage", "MEV"], correct: 1 },
+    { question: "Flash loans unique feature?", options: ["Collateralized", "Uncollateralized", "Long-term", "Interest-bearing"], correct: 1 },
+    { question: "AMM stands for?", options: ["Advanced Mining Machine", "Automated Market Maker", "Active Mining Module", "Auto Mining Maker"], correct: 1 },
+    { question: "Stablecoin collateral type?", options: ["Fiat", "Overcollateralized crypto", "Algorithmic", "All"], correct: 3 },
+    { question: "MEV meaning?", options: ["Max Extractable Value", "Miner Extractable Value", "Market Efficiency Value", "Maximum Earnings Value"], correct: 1 },
+
+    // NFT & WEB3 (41-50)
+    { question: "NFT full form?", options: ["New Finance Token", "Non-Fungible Token", "Network Function Token", "Native Finance Token"], correct: 1 },
+    { question: "ERC-721 standard for?", options: ["Fungible tokens", "Non-fungible tokens", "Stablecoins", "Derivatives"], correct: 1 },
+    { question: "OpenSea primary function?", options: ["DEX", "NFT marketplace", "Lending", "Bridge"], correct: 1 },
+    { question: "CryptoPunks launched year?", options: ["2016", "2017", "2018", "2019"], correct: 1 },
+    { question: "BAYC blockchain?", options: ["Solana", "Ethereum", "Base", "Tezos"], correct: 1 },
+    { question: "NFT floor price?", options: ["Highest sale", "Lowest listing", "Average sale", "Total volume"], correct: 1 },
+    { question: "Lazy minting benefit?", options: ["Free minting", "Gasless until sale", "Faster mint", "Cheaper gas"], correct: 1 },
+    { question: "NFT royalty paid to?", options: ["Buyer", "Seller", "Creator", "Marketplace"], correct: 2 },
+    { question: "Web3 core principle?", options: ["Centralization", "Ownership", "Intermediaries", "Permissioned"], correct: 1 },
+    { question: "DAO stands for?", options: ["Digital Asset Organization", "Decentralized Autonomous Organization", "Direct Access Organization", "Dynamic Asset Organization"], correct: 1 }
 ];
+
 
 let currentQuestion = 0;
 let score = 0;

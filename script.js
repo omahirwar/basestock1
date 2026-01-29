@@ -1,20 +1,52 @@
-// Questions array
+// 🔥 40 BASE + CRYPTO + DEFI + NFT QUESTIONS 🔥
 const questions = [
-    {
-        question: "Base chain kis L2 solution pe based hai?",
-        options: ["Arbitrum", "Optimism", "Polygon", "zkSync"],
-        correct: 1
-    },
-    {
-        question: "Base ka founder kaun hai?",
-        options: ["Vitalik Buterin", "Jesse Pollak", "Gavin Wood", "Anatoly Yakovenko"],
-        correct: 1
-    },
-    {
-        question: "Base mainnet kab launch hua?",
-        options: ["2022", "2023", "2024", "2025"],
-        correct: 1
-    }
+    // BASE CHAIN (1-15)
+    { question: "Base chain kis L2 solution pe based hai?", options: ["Arbitrum", "Optimism", "Polygon", "zkSync"], correct: 1 },
+    { question: "Base ka founder kaun hai?", options: ["Vitalik Buterin", "Jesse Pollak", "Gavin Wood", "Anatoly"], correct: 1 },
+    { question: "Base mainnet kab launch hua?", options: ["2022", "2023", "2024", "2025"], correct: 2 },
+    { question: "Base ka sequencer kahan host hota hai?", options: ["AWS", "Google Cloud", "Decentralized", "Azure"], correct: 0 },
+    { question: "Base ka average block time kya hai?", options: ["200ms", "420ms", "1 second", "2 seconds"], correct: 1 },
+    { question: "Base Ethereum se compatible hai?", options: ["Haan", "Nahi", "Partial", "Future mein"], correct: 0 },
+    { question: "Base ka native token kya hai?", options: ["BASE", "ETH", "USDC", "Koi nahi"], correct: 3 },
+    { question: "Base ka TVL kitna hai (approx)?", options: ["$1B", "$3B+", "$10B", "$50B"], correct: 1 },
+    { question: "Base kis company ne launch kiya?", options: ["Binance", "Coinbase", "Polygon", "Solana"], correct: 1 },
+    { question: "Base bridge kis se connect hota hai?", options: ["Arbitrum", "Ethereum Mainnet", "BSC", "Solana"], correct: 1 },
+    { question: "Base ka gas token kya hai?", options: ["BASE", "BNB", "ETH", "USDC"], correct: 2 },
+    { question: "Base ka explorer URL kya hai?", options: ["basescan.org", "base.org", "basechain.com", "base explorer.io"], correct: 0 },
+    { question: "Base OP Stack pe based hai?", options: ["Haan", "Nahi", "Future mein", "Partial"], correct: 0 },
+    { question: "Base ka first dApp kya tha?", options: ["Uniswap", "Friend.tech", "Aave", "OpenSea"], correct: 1 },
+    { question: "Base L1 sequencer use karta hai?", options: ["Haan", "Nahi", "Optional", "Future mein"], correct: 1 },
+
+    // BLOCKCHAIN BASICS (16-25)
+    { question: "Blockchain ka first block kya kehlata hai?", options: ["Origin", "Genesis", "Root", "Source"], correct: 1 },
+    { question: "Blockchain ka main feature kya hai?", options: ["Centralized", "Immutable", "Slow", "Expensive"], correct: 1 },
+    { question: "Bitcoin ka creator kaun hai?", options: ["Vitalik", "Satoshi Nakamoto", "Jesse Pollak", "Changpeng Zhao"], correct: 1 },
+    { question: "Smart contract kis chain pe famous hai?", options: ["Bitcoin", "Ethereum", "Base", "Solana"], correct: 1 },
+    { question: "Merkle tree kis ke liye use hota hai?", options: ["Speed", "Data verification", "Mining", "Storage"], correct: 1 },
+    { question: "Private key kya hai?", options: ["Public address", "Wallet ka secret code", "Transaction ID", "Gas fee"], correct: 1 },
+    { question: "Nonce kya hota hai?", options: ["Gas price", "Transaction number", "Block size", "Reward"], correct: 1 },
+    { question: "Proof of Work kis mein use hota hai?", options: ["Ethereum", "Bitcoin", "Base", "All"], correct: 1 },
+    { question: "Gas fee kyun lagti hai?", options: ["Network congestion", "Transaction process", "Storage", "All"], correct: 3 },
+    { question: "dApp kya hai?", options: ["Centralized app", "Decentralized app", "Mobile app", "Web app"], correct: 1 },
+
+    // DEFI (26-32)
+    { question: "DeFi ka full form?", options: ["Decentralized Finance", "Digital Finance", "Direct Finance", "Dynamic Finance"], correct: 0 },
+    { question: "DEX ka matlab?", options: ["Direct Exchange", "Decentralized Exchange", "Digital Exchange", "Dynamic Exchange"], correct: 1 },
+    { question: "Liquidity pool kya hai?", options: ["Trading pair funds", "Mining pool", "Gas pool", "NFT pool"], correct: 0 },
+    { question: "Yield farming kya hai?", options: ["NFT minting", "LP tokens stake karna", "Trading", "Bridging"], correct: 1 },
+    { question: "Uniswap kis pe hai?", options: ["Solana", "Ethereum/Base", "Bitcoin", "Cardano"], correct: 1 },
+    { question: "Impermanent loss kya hai?", options: ["Permanent profit loss", "LP price change loss", "Gas fee", "Slippage"], correct: 1 },
+    { question: "Flash loan kya hai?", options: ["Long term loan", "Instant borrow-return", "NFT loan", "Stablecoin loan"], correct: 1 },
+
+    // NFT (33-40)
+    { question: "NFT ka full form?", options: ["New Finance Token", "Non-Fungible Token", "Network Function Token", "Native Finance Token"], correct: 1 },
+    { question: "NFT kis pe mint hote hain?", options: ["Bitcoin", "Ethereum/Base", "BNB", "All"], correct: 1 },
+    { question: "OpenSea kya hai?", options: ["DEX", "NFT marketplace", "Lending platform", "Bridge"], correct: 1 },
+    { question: "CryptoPunks kab launch hue?", options: ["2017", "2018", "2020", "2021"], correct: 0 },
+    { question: "Bored Ape Yacht Club kis pe hai?", options: ["Solana", "Ethereum", "Base", "Tezos"], correct: 1 },
+    { question: "NFT royalty kya hai?", options: ["Creator fee", "Gas fee", "Trading fee", "Mint fee"], correct: 0 },
+    { question: "Lazy minting kya hai?", options: ["Free minting", "Gasless mint", "Instant mint", "Batch mint"], correct: 1 },
+    { question: "NFT floor price kya hai?", options: ["Highest price", "Lowest listing price", "Average price", "Volume"], correct: 1 }
 ];
 
 let currentQuestion = 0;
@@ -25,8 +57,8 @@ let selectedAnswer = null;
 
 // Start quiz
 function startQuiz() {
-    document.getElementById('homeScreen').classList.add('hidden');
-    document.getElementById('quizScreen').classList.remove('hidden');
+    document.getElementById('homeScreen').style.display = 'none';
+    document.getElementById('quizScreen').style.display = 'block';
     currentQuestion = 0;
     score = 0;
     showQuestion();
@@ -35,7 +67,7 @@ function startQuiz() {
 // Show current question
 function showQuestion() {
     const q = questions[currentQuestion];
-    document.getElementById('questionNum').textContent = `Q${currentQuestion + 1}`;
+    document.getElementById('questionNum').textContent = `BATTLE ${currentQuestion + 1}/${questions.length}`;
     document.getElementById('question').textContent = q.question;
     
     const optionsDiv = document.getElementById('options');
@@ -43,14 +75,15 @@ function showQuestion() {
     
     q.options.forEach((option, index) => {
         const btn = document.createElement('button');
-        btn.className = 'w-full p-4 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 text-left transition-all duration-300 hover:scale-[1.02]';
+        btn.className = 'w-full p-8 rounded-3xl bg-white/20 hover:bg-white/40 backdrop-blur-xl border-2 border-white/40 text-left text-xl font-bold transition-all duration-500 hover:scale-[1.05] hover:shadow-2xl shadow-lg text-white hover:text-black';
         btn.textContent = option;
         btn.onclick = () => selectAnswer(index);
         optionsDiv.appendChild(btn);
     });
     
-    document.getElementById('nextBtn').classList.add('hidden');
+    document.getElementById('nextBtn').style.display = 'none';
     timeLeft = 30;
+    document.getElementById('timer').textContent = '30s';
     startTimer();
 }
 
@@ -58,7 +91,11 @@ function showQuestion() {
 function startTimer() {
     timer = setInterval(() => {
         timeLeft--;
-        document.getElementById('timer').textContent = timeLeft;
+        document.getElementById('timer').textContent = timeLeft + 's';
+        document.getElementById('timer').style.animation = 'none';
+        setTimeout(() => {
+            document.getElementById('timer').style.animation = 'pulse-glow 0.3s infinite';
+        }, 10);
         
         if (timeLeft <= 0) {
             clearInterval(timer);
@@ -72,27 +109,35 @@ function selectAnswer(index) {
     clearInterval(timer);
     selectedAnswer = index;
     
-    // Show correct answer
     const buttons = document.querySelectorAll('#options button');
     buttons.forEach((btn, i) => {
         if (i === questions[currentQuestion].correct) {
-            btn.classList.add('bg-green-500/20', 'border-green-400');
+            btn.style.background = 'linear-gradient(45deg, #00FF88, #4CAF50)';
+            btn.style.borderColor = '#00FF88';
+            btn.style.color = 'black';
+            btn.style.transform = 'scale(1.05)';
         } else if (i === index && index !== questions[currentQuestion].correct) {
-            btn.classList.add('bg-red-500/20', 'border-red-400');
+            btn.style.background = 'linear-gradient(45deg, #FF4444, #D32F2F)';
+            btn.style.borderColor = '#FF4444';
+            btn.style.color = 'white';
+        } else {
+            btn.style.opacity = '0.5';
         }
     });
     
     if (index === questions[currentQuestion].correct) {
         score += 10;
+        // CONFETTI EXPLOSION
         confetti({
-            particleCount: 100,
-            spread: 70,
-            origin: { y: 0.6 }
+            particleCount: 150,
+            spread: 90,
+            origin: { y: 0.5 },
+            colors: ['#FF1744', '#00E5FF', '#FFEB3B', '#4CAF50']
         });
     }
     
-    document.getElementById('score').textContent = `Score: ${score}`;
-    document.getElementById('nextBtn').classList.remove('hidden');
+    document.getElementById('score').textContent = `KILLS: ${score}`;
+    document.getElementById('nextBtn').style.display = 'block';
 }
 
 // Next question
@@ -108,12 +153,13 @@ function nextQuestion() {
 
 // Show result
 function showResult() {
-    document.getElementById('quizScreen').classList.add('hidden');
-    document.getElementById('resultScreen').classList.remove('hidden');
+    document.getElementById('quizScreen').style.display = 'none';
+    document.getElementById('resultScreen').style.display = 'block';
     const percentage = Math.round((score / (questions.length * 10)) * 100);
-    document.getElementById('finalScore').textContent = `${percentage}%`;
+    document.getElementById('finalScore').textContent = percentage + '%';
+    document.getElementById('finalPoints').textContent = score;
 }
 
 function showLeaderboard() {
-    alert('Leaderboard coming soon! 🔥');
+    alert('LEADERBOARD COMING SOON! 🔥\nTop scorers get Base NFTs!');
 }
